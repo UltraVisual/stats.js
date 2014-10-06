@@ -1,6 +1,18 @@
 /**
  * @author mrdoob / http://mrdoob.com/
+ *
+ *
  */
+
+var GS = GS || {};
+GS.deviceData = GS.deviceData || {};
+GS.deviceData.performanceIndex = GS.deviceData.performanceIndex || 0;
+GS.deviceData.marketingName = GS.deviceData.marketingName || 'iPad';
+GS.deviceData.vendor = GS.deviceData.vendor || 'Apple';
+
+document.addEventListener('onStatsChange', function(event){
+	GS.deviceData.performanceIndex = event.data;
+});
 
 var Stats = function () {
 
@@ -49,19 +61,6 @@ var Stats = function () {
 	msText.innerHTML = 'MS';
 	msDiv.appendChild( msText );
 
-	var msGraph = document.createElement( 'div' );
-	msGraph.id = 'msGraph';
-	msGraph.style.cssText = 'position:relative;width:74px;height:30px;background-color:#0f0';
-	msDiv.appendChild( msGraph );
-
-	while ( msGraph.children.length < 74 ) {
-
-		var bar = document.createElement( 'span' );
-		bar.style.cssText = 'width:1px;height:30px;float:left;background-color:#131';
-		msGraph.appendChild( bar );
-
-	}
-
 	var setMode = function ( value ) {
 
 		mode = value;
@@ -109,8 +108,9 @@ var Stats = function () {
 			msMin = Math.min( msMin, ms );
 			msMax = Math.max( msMax, ms );
 
-			msText.textContent = ms + ' MS (' + msMin + '-' + msMax + ')';
-			updateGraph( msGraph, Math.min( 30, 30 - ( ms / 200 ) * 30 ) );
+			msText.textContent = 'Perf Index: ' + GS.deviceData.performanceIndex;
+			msText.textContent += '\nDevice: ' + GS.deviceData.vendor + ' ' + GS.deviceData.marketingName;
+			msText.textContent += '\nScreen: ' + window.innerWidth + ' x ' + window.innerHeight;
 
 			frames ++;
 
