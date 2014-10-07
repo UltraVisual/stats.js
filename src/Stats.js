@@ -7,10 +7,10 @@
 var GS = GS || {};
 GS.deviceData = GS.deviceData || {};
 GS.deviceData.performanceIndex = GS.deviceData.performanceIndex || 0;
-GS.deviceData.marketingName = GS.deviceData.marketingName || 'iPad';
-GS.deviceData.vendor = GS.deviceData.vendor || 'Apple';
+GS.deviceData.marketingName = GS.deviceData.marketingName || '';
+GS.deviceData.vendor = GS.deviceData.vendor || '';
 
-document.addEventListener('onStatsChange', function(event){
+document.addEventListener('onPerformanceIndexAvailable', function(event){
 	GS.deviceData.performanceIndex = event.data;
 });
 
