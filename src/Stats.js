@@ -108,9 +108,10 @@ var Stats = function () {
 			msMin = Math.min( msMin, ms );
 			msMax = Math.max( msMax, ms );
 
-			msText.textContent = 'Perf Index: ' + GS.deviceData.performanceIndex;
-			msText.textContent += '\nDevice: ' + GS.deviceData.vendor + ' ' + GS.deviceData.marketingName;
-			msText.textContent += '\nScreen: ' + window.innerWidth + ' x ' + window.innerHeight;
+			msText.textContent = 'Perf Index: ' + GS.deviceData.performanceIndex +
+				'\nDevice: ' + GS.deviceData.vendor + ' ' +
+				GS.deviceData.marketingName + '\nScreen: ' +
+				window.innerWidth + ' x ' + window.innerHeight;
 
 			frames ++;
 
