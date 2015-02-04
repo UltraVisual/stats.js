@@ -11,7 +11,8 @@ GS.deviceData.marketingName = GS.deviceData.marketingName || '';
 GS.deviceData.vendor = GS.deviceData.vendor || '';
 
 document.addEventListener('onPerformanceIndexAvailable', function(event){
-	GS.deviceData.performanceIndex = event.data;
+	GS.deviceData.performanceIndex = event.data.performanceIndex;
+	GS.deviceData.marketingName = event.data.marketName;
 });
 
 var Stats = function () {
